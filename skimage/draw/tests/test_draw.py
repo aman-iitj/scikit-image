@@ -233,6 +233,23 @@ def test_circle_perimeter_bresenham():
     )
     assert_array_equal(img, img_)
 
+    img_1 = img = np.zeros((10, 10), 'uint8')
+    rr, cc = circle_perimeter(4.5, 4.5, 3.5, method='bresenham')
+    img_1[rr, cc] = 1
+    img_1_ = np.array(
+        [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+         [0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
+         [0, 0, 0, 1, 0, 0, 0, 1, 0, 0],
+         [0, 0, 1, 0, 0, 0, 0, 0, 1, 0],
+         [0, 1, 0, 0, 0, 0, 0, 0, 0, 1],
+         [0, 1, 0, 0, 0, 0, 0, 0, 0, 1],
+         [0, 1, 0, 0, 0, 0, 0, 0, 0, 1],
+         [0, 0, 1, 0, 0, 0, 0, 0, 1, 0],
+         [0, 0, 0, 1, 0, 0, 0, 1, 0, 0],
+         [0, 0, 0, 0, 1, 1, 1, 0, 0, 0]]
+    )
+    assert_array_equal(img_1, img_1_)
+
 
 def test_circle_perimeter_bresenham_shape():
     img = np.zeros((15, 20), 'uint8')
